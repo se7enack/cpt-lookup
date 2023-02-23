@@ -1,0 +1,19 @@
+#!/bin/sh
+
+url="https://www.childrenshospital.org/sites/default/files/2022-05/04-2774441_Boston%20Childrens%20Hospital_Standard%20Charges_JSON.json"
+file=docker/latest.json
+
+if ! [ -f "$file" ]; then
+    echo "You don't have the json file locally, downloading..."
+    wget ${url} -O ${file}
+fi
+
+now=`date +"%Y-%m-%d"`
+folder="$HOME/Desktop/cpt/$now"
+
+mkdir -p $folder
+cd docker
+docker build -t cpt .
+clear;echo;echo "One moment please...";echo
+docker run -v $folder:/tmp  -it cpt
+open $folder
