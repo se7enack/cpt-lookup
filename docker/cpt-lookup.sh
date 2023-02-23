@@ -15,7 +15,7 @@ fi
 
 if test -z "$cpt"
 then
-    echo;echo -n "What CPT code do you want to lookup?: "
+    echo;echo -n "Which CPT code would you like to lookup?: "
     read cpt
 fi
 
