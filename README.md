@@ -14,4 +14,4 @@ Usage:
 
 
 #
-![alt text](https://github.com/se7enack/cpt-lookup/blob/main/cpt.png?raw=true)
+![alt text](https://github.com/se7enack/cpt-lookup/blob/main/cpt-screenshot.png?raw=true)
