@@ -5,7 +5,7 @@ Prerequisite(s):
 >Docker: https://docs.docker.com/desktop/install/mac-install/
 
 Download Tool:
->git clone git@github.com:se7enack/cpt-lookup.git
+>git clone https://github.com/se7enack/cpt-lookup.git
 
 >cd cpt-lookup
 
