@@ -15,11 +15,23 @@ fi
 
 if test -z "$cpt"
 then
-    echo;echo -n "Which CPT code would you like to lookup?: "
-    read cpt
+    echo;echo -n "Which CPT code would you like to lookup?: ";read -n5 cpt
 fi
 
-cat latest.json | jq -r ".[] | select( .\"CPT CODE\" == \"$cpt\" )" > /tmp/${cpt}.json
-if ! [ -s /tmp/${cpt}.json ]; then
-    echo "CPT ${cpt} does not exist in this file" > /tmp/${cpt}.json
-fi
+lookup(){
+    echo;cat latest.json | jq -r ".[] | select( .\"CPT CODE\" == \"$cpt\" )" > /tmp/${cpt}.json
+    if ! [ -s /tmp/${cpt}.json ]; then
+        echo "CPT ${cpt} does not exist in this file" > /tmp/${cpt}.json
+    fi
+}
+
+lookup
+
+while true; do
+    read -p "Do you wish to search for another?" yn
+    case $yn in
+        [Yy]* ) echo;echo -n "Which CPT code would you like to lookup?: ";read -n5 cpt;lookup;;
+        [Nn]* ) echo;echo "Have a great day!";echo;exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
