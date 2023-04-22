@@ -5,6 +5,13 @@ file=docker/latest.json
 now=`date +"%Y-%m-%d"`
 folder="$HOME/Desktop/cpt/$now"
 
+docker ps &> /dev/null
+if ! [ $? -eq 0 ]; then
+	echo
+	echo "Docker is either not running or installed."
+	echo;exit
+fi
+
 if ! [ -f "$file" ]; then
     echo "You don't have the json file locally, downloading..."
     wget ${url} -O ${file}
